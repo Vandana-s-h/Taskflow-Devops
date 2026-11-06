@@ -52,6 +52,10 @@ def update_task(task_id: int, updated_task: Task):
     raise HTTPException(status_code=404, detail="Task not found")
 
 
+@app.get("/tasks/count")
+def count_tasks():
+    return {"total_tasks": len(tasks)}
+
 @app.delete("/tasks/{task_id}")
 def delete_task(task_id: int):
     for task in tasks:
@@ -59,3 +63,4 @@ def delete_task(task_id: int):
             tasks.remove(task)
             return {"message": "Task deleted successfully"}
     raise HTTPException(status_code=404, detail="Task not found")
+
