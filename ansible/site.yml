@@ -1,0 +1,7 @@
+---
+- name: Deploy TaskFlow Application
+  hosts: taskflow_servers
+  become: true
+
+  roles:
+    - taskflow
