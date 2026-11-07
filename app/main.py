@@ -33,6 +33,9 @@ def add_task(task: Task):
     tasks.append(new_task)
     return new_task
 
+@app.get("/tasks/count")
+def count_tasks():
+    return {"total_tasks": len(tasks)}
 
 @app.get("/tasks/{task_id}")
 def get_task(task_id: int):
@@ -51,10 +54,6 @@ def update_task(task_id: int, updated_task: Task):
             return task
     raise HTTPException(status_code=404, detail="Task not found")
 
-
-@app.get("/tasks/count")
-def count_tasks():
-    return {"total_tasks": len(tasks)}
 
 @app.delete("/tasks/{task_id}")
 def delete_task(task_id: int):
