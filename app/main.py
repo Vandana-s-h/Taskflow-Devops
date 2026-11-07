@@ -12,6 +12,9 @@ class Task(BaseModel):
     title: str
     completed: bool = False
 
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
 
 @app.get("/")
 def home():
